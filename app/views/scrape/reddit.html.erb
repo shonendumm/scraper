@@ -1,5 +1,5 @@
 <h1>From Reddit</h1>
-<table class="table">
+<table class="highlight bordered ">
   <thead>
     <tr>
       <th></th>
@@ -9,7 +9,7 @@
     <% @entries.each do |entry| %>
     <tr>
       <td><%= entry.title %></td>
-      <td><%= link_to 'link', entry.link %></td>
+      <td><%= link_to "#{entry.link}", entry.link %></td>
     </tr>
     <% end %>
   </tbody>

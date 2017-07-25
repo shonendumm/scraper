@@ -7,6 +7,10 @@ class ScrapeController < ApplicationController
     scrape_reddit
   end
 
+  def diaryland
+    scrape_diaryland #to be done next, using upton gem or metainspector
+  end
+
   private
 
   def scrape_reddit
