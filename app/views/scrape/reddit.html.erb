@@ -1,0 +1,16 @@
+<h1>From Reddit</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entries.each do |entry| %>
+    <tr>
+      <td><%= entry.title %></td>
+      <td><%= link_to 'link', entry.link %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

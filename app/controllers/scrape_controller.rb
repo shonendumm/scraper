@@ -1,6 +1,9 @@
 class ScrapeController < ApplicationController
 
   def index
+  end
+
+  def reddit
     scrape_reddit
   end
 
@@ -17,7 +20,7 @@ class ScrapeController < ApplicationController
       link = entry.css('p.title>a')[0]['href']
       entriesArray << Entry.new(title, link)
     end
-    render html: entriesArray
+    @entries = entriesArray
   end
 
   def random_agent
