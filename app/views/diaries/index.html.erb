@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @diaries.each do |page| %>
+    <tr>
+      <td><%= link_to "#{page.title}", diary_path(page) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,6 +1,7 @@
 class ScrapeController < ApplicationController
 
   def index
+    @pages_count = Diary.count
   end
 
   def reddit
@@ -44,17 +45,28 @@ class ScrapeController < ApplicationController
   end
 
   def scrape_diaryland_pages(linksArray)
-    require 'open-uri'
-    linksArray.each do |entry|
-      # check link if exists in record
-      unless Diary.find_by(link: "#{entry.link}")
-        doc = Nokogiri::HTML(open("#{entry.link}", 'User-Agent' => random_agent))
-        body = doc.css('p')
-        Diary.create(title: entry.title, link: entry.link, body: body)
+    if all_scraped?(linksArray)
+      redirect_to diaries_path, notice: 'All scraped and done'
+    else
+      require 'open-uri'
+      linksArray.each do |entry|
+        # check link if exists in record
+        unless link_persists?(entry.link)
+          doc = Nokogiri::HTML(open("#{entry.link}", 'User-Agent' => random_agent))
+          body = doc.css('p')
+          Diary.create(title: entry.title, link: entry.link, body: body)
+          sleep 1 # set interval for getting link
+        end
       end
     end
   end
 
+  def link_persists?(link)
+    Diary.find_by(link: link)
+  end
 
+  def all_scraped?(linksArray)
+    linksArray.count == Diary.all.count
+  end
 
 end

@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get '/reddit', to: 'scrape#reddit'
   get '/orchardroad', to: 'scrape#diaryland'
 
+  resources :diaries, only: [:index, :show]
+
 end

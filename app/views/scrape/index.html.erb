@@ -1,3 +1,5 @@
 <h1>#index</h1>
+<p><%= button_to 'Scrape Reddit', reddit_path, class:'waves-effect waves-light btn' %></p>
 
-<%= link_to 'Reddit', reddit_path %>
+<h4>Diaryland entries scraped: <%= @pages_count %></h4>
+<p><%= button_to 'Scrape my diaryland', orchardroad_path, method: :get, class:'waves-effect waves-light btn' %></p>
