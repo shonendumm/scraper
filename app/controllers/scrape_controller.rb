@@ -9,7 +9,7 @@ class ScrapeController < ApplicationController
   end
 
   def diaryland
-    scrape_diaryland_pages(scrape_diaryland_index) #to be done next, using upton gem or metainspector
+    scrape_diaryland_pages(scrape_diaryland_index)
   end
 
   private
